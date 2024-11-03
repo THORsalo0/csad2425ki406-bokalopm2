@@ -3,13 +3,13 @@
 ### **Rock, Paper, Scissors Game Project**
 
 ### Project Overview
-This repository contains the implementation and documentation for a **Rock, Paper, Scissors** game. The goal of the project is to create a fully functional game that runs on an **Arduino Uno R3 CH340** microcontroller, enabling users to enjoy different gameplay modes on a hardware-based platform.
+This repository contains the implementation and documentation for a **Rock, Paper, Scissors** game. The goal of the project is to create a fully functional game that runs on an **ESP-8266** microcontroller, enabling users to enjoy different gameplay modes on a hardware-based platform.
 
 ### Task Details
 The development of this project consists of several key steps:
 
 1. Designing and developing the game logic for **Rock, Paper, Scissors**.
-2. Utilizing the **Arduino Uno R3 CH340** as the hardware platform to run the game.
+2. Utilizing the **ESP-8266** as the hardware platform to run the game.
 3. Handling input/output interactions using available hardware components.
 4. Ensuring seamless gameplay across the following modes:
    - **Player vs AI**
@@ -27,7 +27,7 @@ The development of this project consists of several key steps:
 - **Version Control**: Git for source code management and collaboration.
   
 #### Hardware:
-- **Microcontroller**: Arduino Uno R3 CH340.
+- **Microcontroller**: ESP-8266.
 - **Output**: Display or interface for showing game states.
 - **Power Source**: Powered via USB connection.
 
