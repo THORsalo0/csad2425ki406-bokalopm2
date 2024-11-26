@@ -30,6 +30,10 @@ jobs:
       - name: Build solution
         run: msbuild ./APKS_Lab3/APKS_Lab3.sln /p:Configuration=Release
 
+        # List files in the Release directory
+      - name: List files in Release directory
+        run: dir ./APKS_Lab3/bin/Release
+
         # Upload Executable as Artifact
       - name: Upload Executable as Artifact
         uses: actions/upload-artifact@v3
