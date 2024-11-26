@@ -24,7 +24,7 @@ jobs:
 
        # Restore NuGet packages
       - name: Restore NuGet packages
-        run: nuget restore .APKS_Lab3/APKS_Lab3.sln
+        run: nuget restore ./APKS_Lab3/APKS_Lab3.sln
 
       # Install Arduino CLI
       - name: Set up Arduino CLI
