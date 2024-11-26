@@ -29,6 +29,14 @@ jobs:
         # Build solution
       - name: Build solution
         run: msbuild ./APKS_Lab3/APKS_Lab3.sln /p:Configuration=Release
+
+        # Upload Executable as Artifact
+      - name: Upload Executable as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+            name: Executable
+            path: ./APKS_Lab3/bin/Release/APKS_Lab3.exe
+
           
 
       # Install Arduino CLI
