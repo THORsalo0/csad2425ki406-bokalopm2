@@ -30,7 +30,15 @@ jobs:
       - name: Build solution
         run: msbuild ./APKS_Lab3/APKS_Lab3.sln /p:Configuration=Release
 
-        # List files in the Release directory
+        # Перевірити, чи створені файли у корені проекту
+      - name: List files in project root
+        run: dir ./
+
+        # Перевірити, чи існує каталог bin
+      - name: List files in bin directory
+        run: dir ./APKS_Lab3/bin/
+
+        # Перевірити, чи існує каталог Release
       - name: List files in Release directory
         run: dir ./APKS_Lab3/bin/Release
 
