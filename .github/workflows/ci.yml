@@ -26,6 +26,11 @@ jobs:
       - name: Restore NuGet packages
         run: nuget restore ./APKS_Lab3/APKS_Lab3.sln
 
+        # Build solution
+      - name: Build solution
+        run: msbuild ./APKS_Lab3/APKS_Lab3.sln /p:Configuration=Release
+          
+
       # Install Arduino CLI
       - name: Set up Arduino CLI
         run: |
