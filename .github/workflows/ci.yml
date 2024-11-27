@@ -54,11 +54,11 @@ jobs:
           dotnet restore ./APKS_Lab3/UnitTestProject_Lab3_Software/UnitTestProject_Lab3_Software.csproj
 
           
-      # Install Visual Studio Build Tools
-      - name: Install Visual Studio Build Tools
+      # Set up .NET Framework 4.8 environment
+      - name: Set up Visual Studio Build Tools
         run: |
           Invoke-WebRequest -Uri https://aka.ms/vs/17/release/vs_installer.exe -OutFile vs_installer.exe
-          powershell -ExecutionPolicy Bypass -Command "& 'vs_installer.exe' --quiet --wait --add BuildTools"
+          Start-Process vs_installer.exe -ArgumentList '--quiet', '--wait', '--add', 'BuildTools' -NoNewWindow -Wait
           Remove-Item vs_installer.exe -Force
 
     # Check if vstest.console.exe is available
