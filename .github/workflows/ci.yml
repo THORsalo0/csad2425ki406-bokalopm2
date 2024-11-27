@@ -48,12 +48,18 @@ jobs:
           
 
 
-      # Run PowerShell Tests
-      - name: Run PowerShell Tests
-        shell: pwsh
+      # Run unit tests
+      - name: Run unit tests
         run: |
-          # Run the tests
-          .\Tests\Tests.ps1 | Tee-Object -FilePath serial_output.log
+          Write-Host "Running unit tests..."
+          # Додаємо заголовок до файлу результатів тестів
+          "Software tests" | Out-File -FilePath "${{ github.workspace }}/Test_results.txt" -Encoding UTF8
+          
+          # Запускаємо юніт-тести та додаємо результати до файлу
+          & 'C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\TestPlatform\vstest.console.exe' `
+              "${{ github.workspace }}/APKS_Lab3/UnitTestProject_Lab3_Software/bin/Release/UnitTestProject_Lab3_Software.dll" `
+              /logger:console >> "${{ github.workspace }}/Test_results.txt"
+              
 
       # Upload test reports as an artifact
       - name: Upload test reports
