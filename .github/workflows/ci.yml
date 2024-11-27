@@ -54,11 +54,11 @@ jobs:
           arduino-cli core install arduino:avr
           arduino-cli lib install ArduinoJson
 
-      # Compile Arduino Sketch (simulated)
-      - name: Compile Arduino Sketch (simulated)
+      # Compile Arduino Sketch for ESP32
+      - name: Compile Arduino Sketch for ESP32
         run: |
           mkdir -p build  # Ensure the build directory exists
-          arduino-cli compile --fqbn arduino:avr:nano:cpu=atmega328old --output-dir build lab3Ino/lab3Ino.ino
+          arduino-cli compile --fqbn esp32:esp32:esp32dev --output-dir build lab3Ino/lab3Ino.ino
 
 
       # Run PowerShell Tests
