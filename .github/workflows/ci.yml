@@ -47,12 +47,6 @@ jobs:
           path: ./APKS_Lab3/APKS_Lab3/obj/Release/APKS_Lab3.exe
           
 
-      # Install Arduino AVR core and libraries
-      - name: Install Arduino AVR core and libraries
-        run: |
-          arduino-cli core update-index
-          arduino-cli core install arduino:avr
-          arduino-cli lib install ArduinoJson
 
       # Compile Arduino Sketch for ESP32
       - name: Compile Arduino Sketch for ESP32
