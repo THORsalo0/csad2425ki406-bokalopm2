@@ -14,7 +14,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      # Checkout the repository
+       # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -30,24 +30,16 @@ jobs:
       - name: Build solution
         run: msbuild ./APKS_Lab3/APKS_Lab3.sln /p:Configuration=Release /p:OutDir=./APKS_Lab3/output/ /verbosity:minimal
 
-      # Ensure output directory exists
-      - name: Check output directory
-        run: |
-          if (-Not (Test-Path './APKS_Lab3/output/')) {
-            Write-Error "Output directory not found."
-          }
-
-      # List files in output directory
+      # List files in correct output directory
       - name: List files in output directory
-        run: dir ./APKS_Lab3/output/
+        run: dir ./APKS_Lab3/APKS_Lab3/output/
 
       # Upload Executable as Artifact
       - name: Upload Executable as Artifact
         uses: actions/upload-artifact@v3
         with:
           name: Executable
-          path: ./APKS_Lab3/output/*.exe
-
+          path: ./APKS_Lab3/APKS_Lab3/output/*.exe
           
 
       # Install Arduino CLI
