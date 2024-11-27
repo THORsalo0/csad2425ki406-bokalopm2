@@ -58,7 +58,7 @@ jobs:
       - name: Install Visual Studio Build Tools
         run: |
           Invoke-WebRequest -Uri https://aka.ms/vs/17/release/vs_installer.exe -OutFile vs_installer.exe
-          Start-Process -FilePath vs_installer.exe -ArgumentList '--quiet', '--wait', '--add', 'BuildTools' -NoNewWindow -Wait
+          powershell -ExecutionPolicy Bypass -Command "& 'vs_installer.exe' --quiet --wait --add BuildTools"
           Remove-Item vs_installer.exe -Force
 
     # Check if vstest.console.exe is available
