@@ -54,7 +54,8 @@ jobs:
         run: |
           Invoke-WebRequest -Uri https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz -OutFile arduino-cli_latest_Linux_64bit.tar.gz
           tar -xvf arduino-cli_latest_Linux_64bit.tar.gz
-          sudo mv arduino-cli /usr/local/bin/
+          # Для Windows замість sudo mv використовуйте команду для переміщення файлів
+          Move-Item -Path arduino-cli -Destination "C:\Program Files\Arduino CLI\arduino-cli"
           arduino-cli config init
 
           
