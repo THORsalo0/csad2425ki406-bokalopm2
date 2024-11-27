@@ -28,7 +28,7 @@ jobs:
 
       # Build solution with output directory
       - name: Build solution
-        run: msbuild ./APKS_Lab3/APKS_Lab3.sln /p:Configuration=Release /p:OutDir=$(System.DefaultWorkingDirectory)/output/ /verbosity:minimal
+        run: msbuild ./APKS_Lab3/APKS_Lab3.sln /p:Configuration=Release /p:OutDir=${{ github.workspace }}/output/ /verbosity:minimal
 
       # Перевірка всіх файлів у проекті для відладки
       - name: List all files recursively
