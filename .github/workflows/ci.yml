@@ -53,6 +53,16 @@ jobs:
         run: |
           dotnet restore ./APKS_Lab3/UnitTestProject_Lab3_Software/UnitTestProject_Lab3_Software.csproj
 
+
+    # Check if vstest.console.exe is available
+      - name: Check vstest.console.exe availability
+        run: |
+          if (Test-Path "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\TestPlatform\vstest.console.exe") {
+            Write-Host "vstest.console.exe is available."
+          } else {
+            Write-Host "vstest.console.exe is NOT available."
+          }
+
       # Run unit tests and specify output format
       - name: Run unit tests
         run: |
