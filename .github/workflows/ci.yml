@@ -34,6 +34,11 @@ jobs:
       - name: List all files recursively
         run: Get-ChildItem ./APKS_Lab3 -Recurse
 
+      # Перевірка файлів у obj/Release
+      - name: Check output directory
+        run: dir ./APKS_Lab3/obj/Release
+
+
       # List files in correct output directory
       - name: List files in output directory
         run: dir ./APKS_Lab3/APKS_Lab3/output/
