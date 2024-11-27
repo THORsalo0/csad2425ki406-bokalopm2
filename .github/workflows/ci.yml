@@ -47,14 +47,6 @@ jobs:
           path: ./APKS_Lab3/APKS_Lab3/obj/Release/APKS_Lab3.exe
           
 
-      # Install Arduino CLI
-      - name: Set up Arduino CLI
-        run: |
-          wget https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz
-          tar -xvf arduino-cli_latest_Linux_64bit.tar.gz
-          sudo mv arduino-cli /usr/local/bin/
-          arduino-cli config init
-
       # Install Arduino AVR core and libraries
       - name: Install Arduino AVR core and libraries
         run: |
@@ -68,29 +60,6 @@ jobs:
           mkdir -p build  # Ensure the build directory exists
           arduino-cli compile --fqbn arduino:avr:nano:cpu=atmega328old --output-dir build lab3Ino/lab3Ino.ino
 
-      # Generate client executable from Python script
-      - name: Generate executable
-        run: |
-          mkdir -p dist  # Ensure the dist directory exists
-          pyinstaller --onefile lab3.py
-
-      # Upload the generated executable as an artifact
-      - name: Upload executable as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: compiled-executable
-          path: dist/lab3  # This is the generated file from PyInstaller
-
-      # Download the artifact (the executable)
-      - name: Download compiled executable artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: compiled-executable
-
-      # Install pyserial
-      - name: Install pyserial
-        run: |
-          pip install pyserial
 
       # Run PowerShell Tests
       - name: Run PowerShell Tests
