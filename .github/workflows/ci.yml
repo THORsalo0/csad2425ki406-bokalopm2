@@ -39,16 +39,12 @@ jobs:
         run: dir ./APKS_Lab3/APKS_Lab3/obj/Release
 
 
-      # List files in correct output directory
-      - name: List files in output directory
-        run: dir ./APKS_Lab3/APKS_Lab3/output/
-
       # Upload Executable as Artifact
       - name: Upload Executable as Artifact
         uses: actions/upload-artifact@v3
         with:
           name: Executable
-          path: ./APKS_Lab3/APKS_Lab3/output/*.exe
+          path: ./APKS_Lab3/APKS_Lab3/obj/Release/APKS_Lab3.exe
           
 
       # Install Arduino CLI
