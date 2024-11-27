@@ -24,29 +24,29 @@ jobs:
 
       # Restore NuGet packages
       - name: Restore NuGet packages
-        run: nuget restore APKS_Lab3.sln
+        run: nuget restore ./APKS_Lab3/APKS_Lab3.sln
 
-      # Build solution with diagnostic verbosity and output to a specific directory
+      # Build solution with output directory
       - name: Build solution
-        run: msbuild APKS_Lab3.sln /p:Configuration=Release /p:OutDir=./output/ /verbosity:diagnostic
+        run: msbuild ./APKS_Lab3/APKS_Lab3.sln /p:Configuration=Release /p:OutDir=./APKS_Lab3/output/ /verbosity:minimal
 
       # Ensure output directory exists
       - name: Check output directory
         run: |
-          if (-Not (Test-Path './output/')) {
+          if (-Not (Test-Path './APKS_Lab3/output/')) {
             Write-Error "Output directory not found."
           }
 
       # List files in output directory
       - name: List files in output directory
-        run: dir ./output/
+        run: dir ./APKS_Lab3/output/
 
       # Upload Executable as Artifact
       - name: Upload Executable as Artifact
         uses: actions/upload-artifact@v3
         with:
           name: Executable
-          path: ./output/*.exe
+          path: ./APKS_Lab3/output/*.exe
 
           
 
