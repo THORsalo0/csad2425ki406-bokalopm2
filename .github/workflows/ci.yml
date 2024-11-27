@@ -52,10 +52,12 @@ jobs:
        # Install Arduino CLI 
       - name: Set up Arduino
         run: |
-          wget https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz
+          Invoke-WebRequest -Uri https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz -OutFile arduino-cli_latest_Linux_64bit.tar.gz
           tar -xvf arduino-cli_latest_Linux_64bit.tar.gz
           sudo mv arduino-cli /usr/local/bin/
           arduino-cli config init
+
+          
       - name: Add ESP8266 package
         run: |
           arduino-cli config set board_manager.additional_urls http://arduino.esp8266.com/stable/package_esp8266com_index.json
