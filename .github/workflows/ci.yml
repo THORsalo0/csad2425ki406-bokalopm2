@@ -36,7 +36,7 @@ jobs:
 
       # Перевірка файлів у obj/Release
       - name: Check output directory
-        run: dir ./APKS_Lab3/obj/Release
+        run: dir ./APKS_Lab3/APKS_Lab3/obj/Release
 
 
       # List files in correct output directory
