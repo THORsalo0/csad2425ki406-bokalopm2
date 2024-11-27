@@ -48,47 +48,6 @@ jobs:
           
 
 
-      # Runs a set of commands using the runners shell
-       # Install Arduino CLI 
-      - name: Set up Arduino
-        run: |
-          Invoke-WebRequest -Uri https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz -OutFile arduino-cli_latest_Linux_64bit.tar.gz
-          tar -xvf arduino-cli_latest_Linux_64bit.tar.gz
-          # Створюємо директорію, якщо вона не існує
-          New-Item -Path "C:\Program Files\Arduino CLI" -ItemType Directory -Force
-          # Переміщаємо файл в правильну директорію
-          Move-Item -Path arduino-cli -Destination "C:\Program Files\Arduino CLI\arduino-cli.exe"
-          
-          # Додаємо директорію до системного шляху PATH
-          [System.Environment]::SetEnvironmentVariable("PATH", $env:PATH + ";C:\Program Files\Arduino CLI", [System.EnvironmentVariableTarget]::Machine)
-      
-          # Викликаємо arduino-cli через абсолютний шлях або доданий до PATH
-          & "C:\Program Files\Arduino CLI\arduino-cli.exe" config init
-
-          
-      - name: Add ESP8266 package
-        run: |
-          arduino-cli config set board_manager.additional_urls http://arduino.esp8266.com/stable/package_esp8266com_index.json
-          
-      - name: Install ESP8266
-        run: |
-          arduino-cli core update-index
-          arduino-cli core install esp8266:esp8266  # Install the ESP8266 core
-
-      - name: Compile Arduino Sketch for NodeMCU v3 wifi
-        run: |
-          mkdir -p build  # Ensure the build directory exists
-          arduino-cli compile --fqbn esp8266:esp8266:nodemcuv2 --output-dir build ESP8266_CH340_3/ESP8266_CH340_3.ino
-          
-      # Collect binaries as artifacts
-      - name: Upload binaries reports
-        uses: actions/upload-artifact@v3
-        with:
-          name: compiled-files
-          path: build/*.bin 
-
-
-
       # Run PowerShell Tests
       - name: Run PowerShell Tests
         shell: pwsh
