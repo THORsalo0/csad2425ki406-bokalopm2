@@ -18,36 +18,35 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-       # Setup MSBuild
+      # Setup MSBuild
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1
 
-       # Restore NuGet packages
+      # Restore NuGet packages
       - name: Restore NuGet packages
-        run: nuget restore ./APKS_Lab3/APKS_Lab3.sln
+        run: nuget restore APKS_Lab3.sln
 
-        # Build solution
+      # Build solution with diagnostic verbosity and output to a specific directory
       - name: Build solution
-        run: msbuild ./APKS_Lab3/APKS_Lab3.sln /p:Configuration=Release
+        run: msbuild APKS_Lab3.sln /p:Configuration=Release /p:OutDir=./output/ /verbosity:diagnostic
 
-        # Перевірити, чи створені файли у корені проекту
-      - name: List files in project root
-        run: dir ./
+      # Ensure output directory exists
+      - name: Check output directory
+        run: |
+          if (-Not (Test-Path './output/')) {
+            Write-Error "Output directory not found."
+          }
 
-        # Перевірити, чи існує каталог bin
-      - name: List files in bin directory
-        run: dir ./APKS_Lab3/bin/
+      # List files in output directory
+      - name: List files in output directory
+        run: dir ./output/
 
-        # Перевірити, чи існує каталог Release
-      - name: List files in Release directory
-        run: dir ./APKS_Lab3/bin/Release
-
-        # Upload Executable as Artifact
+      # Upload Executable as Artifact
       - name: Upload Executable as Artifact
         uses: actions/upload-artifact@v3
         with:
-            name: Executable
-            path: ./APKS_Lab3/bin/Release/APKS_Lab3.exe
+          name: Executable
+          path: ./output/*.exe
 
           
 
