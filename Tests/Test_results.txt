@@ -1,0 +1,15 @@
+﻿Software tests
+V S T e s t   v e r s i o n   1 7 . 1 1 . 0   ( x 6 4 )  
+  
+ S t a r t i n g   t e s t   e x e c u t i o n ,   p l e a s e   w a i t . . .  
+ A   t o t a l   o f   1   t e s t   f i l e s   m a t c h e d   t h e   s p e c i f i e d   p a t t e r n .  
+     P a s s e d   T e s t S c i s s o r s B u t t o n E x i s t s   [ 2 3 2   m s ]  
+     P a s s e d   T e s t P a p e r B u t t o n E x i s t s   [ 1   m s ]  
+     P a s s e d   T e s t R o c k B u t t o n E x i s t s   [ <   1   m s ]  
+  
+ T e s t   R u n   S u c c e s s f u l .  
+ T o t a l   t e s t s :   3  
+           P a s s e d :   3  
+   T o t a l   t i m e :   0 , 8 9 5 7   S e c o n d s  
+
+ 
