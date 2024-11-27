@@ -32,7 +32,7 @@ jobs:
 
       # Перевірка всіх файлів у проекті для відладки
       - name: List all files recursively
-        run: dir ./APKS_Lab3 /s
+        run: Get-ChildItem ./APKS_Lab3 -Recurse
 
       # List files in correct output directory
       - name: List files in output directory
