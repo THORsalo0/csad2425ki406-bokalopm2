@@ -57,9 +57,22 @@ jobs:
       # Set up .NET Framework 4.8 environment
       - name: Set up Visual Studio Build Tools
         run: |
-          Invoke-WebRequest -Uri https://aka.ms/vs/17/release/vs_installer.exe -OutFile vs_installer.exe
-          Start-Process vs_installer.exe -ArgumentList '--quiet', '--wait', '--add', 'BuildTools' -NoNewWindow -Wait
-          Remove-Item vs_installer.exe -Force
+          # Завантажуємо інсталяційний файл
+          Invoke-WebRequest -Uri https://aka.ms/vs/17/release/vs_installer.exe -OutFile "${{ github.workspace }}/vs_installer.exe"
+          
+          # Перевіряємо чи файл існує
+          if (Test-Path "${{ github.workspace }}/vs_installer.exe") {
+            Write-Host "Installer downloaded successfully."
+      
+            # Запускаємо інсталятор
+            Start-Process "${{ github.workspace }}/vs_installer.exe" -ArgumentList '--quiet', '--wait', '--add', 'BuildTools' -NoNewWindow -Wait
+          } else {
+            Write-Host "Installer download failed."
+            exit 1
+          }
+      
+          # Видаляємо інсталяційний файл після завершення
+          Remove-Item "${{ github.workspace }}/vs_installer.exe" -Force
 
     # Check if vstest.console.exe is available
       - name: Check vstest.console.exe availability
