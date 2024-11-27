@@ -58,7 +58,12 @@ jobs:
           New-Item -Path "C:\Program Files\Arduino CLI" -ItemType Directory -Force
           # Переміщаємо файл в правильну директорію
           Move-Item -Path arduino-cli -Destination "C:\Program Files\Arduino CLI\arduino-cli.exe"
-          arduino-cli config init
+          
+          # Додаємо директорію до системного шляху PATH
+          [System.Environment]::SetEnvironmentVariable("PATH", $env:PATH + ";C:\Program Files\Arduino CLI", [System.EnvironmentVariableTarget]::Machine)
+      
+          # Викликаємо arduino-cli через абсолютний шлях або доданий до PATH
+          & "C:\Program Files\Arduino CLI\arduino-cli.exe" config init
 
           
       - name: Add ESP8266 package
