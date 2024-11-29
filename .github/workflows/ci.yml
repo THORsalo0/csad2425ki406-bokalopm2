@@ -1,0 +1,63 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - develop
+      - feature/develop/task3
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+       # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Setup MSBuild
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+
+      # Restore NuGet packages
+      - name: Restore NuGet packages
+        run: nuget restore ./APKS_Lab3/APKS_Lab3.sln
+
+      # Build solution with output directory
+      - name: Build solution
+        run: msbuild ./APKS_Lab3/APKS_Lab3.sln /p:Configuration=Release /p:OutDir=${{ github.workspace }}/output/ /verbosity:minimal
+
+      # Перевірка всіх файлів у проекті для відладки
+      - name: List all files recursively
+        run: Get-ChildItem ./APKS_Lab3 -Recurse
+
+      # Перевірка файлів у obj/Release
+      - name: Check output directory
+        run: dir ./APKS_Lab3/APKS_Lab3/obj/Release
+
+
+      # Upload Executable as Artifact
+      - name: Upload Executable as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Executable
+          path: ./APKS_Lab3/APKS_Lab3/obj/Release/APKS_Lab3.exe
+          
+
+
+    # Restore NuGet packages for test project (UnitTestProject)
+      - name: Restore NuGet packages for test project
+        run: |
+          dotnet restore ./APKS_Lab3/UnitTestProject_Lab3_Software/UnitTestProject_Lab3_Software.csproj
+
+          
+
+      # Run Unit tests
+      - name: Run Unit tests
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: Tests/Test_results.txt

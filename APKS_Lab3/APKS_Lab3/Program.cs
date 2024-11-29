@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AKPS_Labs
+namespace APKS_Lab3
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace AKPS_Labs
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new main_Form());
         }
     }
 }

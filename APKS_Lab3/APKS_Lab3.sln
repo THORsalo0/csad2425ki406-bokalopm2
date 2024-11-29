@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APKS_Lab3", "APKS_Lab3\APKS_Lab3.csproj", "{5E58C7AE-E946-4A0A-87F2-190D465628DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject_Lab3_Software", "UnitTestProject_Lab3_Software\UnitTestProject_Lab3_Software.csproj", "{E967B444-9637-466C-87D4-431D96CAA30A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E58C7AE-E946-4A0A-87F2-190D465628DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E58C7AE-E946-4A0A-87F2-190D465628DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E58C7AE-E946-4A0A-87F2-190D465628DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E58C7AE-E946-4A0A-87F2-190D465628DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E967B444-9637-466C-87D4-431D96CAA30A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E967B444-9637-466C-87D4-431D96CAA30A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E967B444-9637-466C-87D4-431D96CAA30A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E967B444-9637-466C-87D4-431D96CAA30A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A6F7BE4-6E77-44CC-81B9-B8D0DB720C2A}
+	EndGlobalSection
+EndGlobal

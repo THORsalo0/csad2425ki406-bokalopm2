@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AKPS_Labs.Properties
+namespace APKS_Lab3.Properties
 {
 
 
