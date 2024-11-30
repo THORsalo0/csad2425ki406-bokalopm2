@@ -65,10 +65,14 @@ jobs:
 
 
 
-       # Install Doxygen using winget
+       # Install Doxygen using PowerShell
       - name: Install Doxygen
         run: |
-          winget install -e --id Doxygen.Doxygen
+          # Download Doxygen installer
+          Invoke-WebRequest -Uri "https://doxygen.nl/files/doxygen-1.12.0-setup.exe" -OutFile "$env:TEMP\doxygen-setup.exe"
+
+          # Install Doxygen silently
+          Start-Process -FilePath "$env:TEMP\doxygen-setup.exe" -ArgumentList "/S" -Wait
 
 
 
