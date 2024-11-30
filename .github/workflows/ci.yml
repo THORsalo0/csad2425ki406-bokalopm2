@@ -65,9 +65,10 @@ jobs:
 
 
 
-      # Install Doxygen
+       # Install Doxygen using winget
       - name: Install Doxygen
-        run: choco install doxygen -y
+        run: |
+          winget install -e --id Doxygen.Doxygen
 
 
 
