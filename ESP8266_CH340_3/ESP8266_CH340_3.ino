@@ -1,5 +1,21 @@
+
+
+/**
+ * @file RockPaperScissorsGame.ino
+ * @brief Програма для ESP32, що реалізує гру "Камінь, ножиці, папір" через COM-порт із підтримкою JSON-запитів.
+ * 
+ * Програма підтримує режими "Гравець проти AI" та "AI проти AI".
+ * Вхідні дані передаються у форматі JSON через серійний порт.
+ */
+
 #include <ArduinoJson.h>
 
+
+/**
+ * @brief Ініціалізація серійного порту.
+ * 
+ * Налаштовує серійний порт на швидкість 115200 біт/с і чекає на його підключення.
+ */
 void setup() {
   Serial.begin(115200); // Ініціалізація серійного порту
   while (!Serial) {
@@ -8,6 +24,13 @@ void setup() {
   //Serial.println("ESP32 готовий до роботи через COM-порт.");
 }
 
+
+
+/**
+ * @brief Генерує випадковий вибір для гри "Камінь, ножиці, папір".
+ * 
+ * @return String Випадковий вибір ("Rock", "Paper" або "Scissors").
+ */
 String getRandomChoice() {
   int randValue = random(0, 3);
   switch (randValue) {
@@ -18,6 +41,14 @@ String getRandomChoice() {
   return "Rock"; // За замовчуванням
 }
 
+
+/**
+ * @brief Визначає переможця між гравцем та AI.
+ * 
+ * @param playerChoice Вибір гравця ("Rock", "Paper" або "Scissors").
+ * @param aiChoice Вибір AI ("Rock", "Paper" або "Scissors").
+ * @return String Результат гри ("Player wins", "AI wins" або "Draw").
+ */
 String determineWinner(String playerChoice, String aiChoice) {
   if (playerChoice == aiChoice) {
     return "Draw";
@@ -30,6 +61,14 @@ String determineWinner(String playerChoice, String aiChoice) {
   return "AI wins";
 }
 
+
+/**
+ * @brief Визначає переможця між двома AI.
+ * 
+ * @param aiChoice1 Вибір першого AI ("Rock", "Paper" або "Scissors").
+ * @param aiChoice2 Вибір другого AI ("Rock", "Paper" або "Scissors").
+ * @return String Результат гри ("AI 1 wins", "AI 2 wins" або "Draw").
+ */
 String determineWinner_AI_vs_AI(String aiChoice1, String aiChoice2) {
   if (aiChoice1 == aiChoice2) {
     return "Draw";
@@ -42,6 +81,12 @@ String determineWinner_AI_vs_AI(String aiChoice1, String aiChoice2) {
   return "AI 2 wins";
 }
 
+
+/**
+ * @brief Основний цикл програми.
+ * 
+ * Зчитує JSON-запити із серійного порту та обробляє їх залежно від вибраного режиму гри.
+ */
 void loop() {
   // Перевірка наявності даних у серійному порті
   if (Serial.available() > 0) {

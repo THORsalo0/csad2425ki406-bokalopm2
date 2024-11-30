@@ -1,0 +1,93 @@
+\doxysection{ESP8266\+\_\+\+CH340/\+ESP8266\+\_\+\+CH340\+\_\+3/\+ESP8266\+\_\+\+CH340\+\_\+3.ino File Reference}
+\hypertarget{_e_s_p8266___c_h340__3_8ino}{}\label{_e_s_p8266___c_h340__3_8ino}\index{ESP8266\_CH340/ESP8266\_CH340\_3/ESP8266\_CH340\_3.ino@{ESP8266\_CH340/ESP8266\_CH340\_3/ESP8266\_CH340\_3.ino}}
+{\ttfamily \#include $<$Arduino\+Json.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_e_s_p8266___c_h340__3_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Ініціалізація серійного порту. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{_e_s_p8266___c_h340__3_8ino_a2daacc76ecc72a1b593f97bed5593f20}{get\+Random\+Choice}} ()
+\begin{DoxyCompactList}\small\item\em Генерує випадковий вибір для гри "{}Камінь, ножиці, папір"{}. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{_e_s_p8266___c_h340__3_8ino_abb87d4ae41111ce60501c0a16946f38e}{determine\+Winner}} (String player\+Choice, String ai\+Choice)
+\begin{DoxyCompactList}\small\item\em Визначає переможця між гравцем та AI. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{_e_s_p8266___c_h340__3_8ino_a4a95b15dbda48d5c06c000bca6cfa2fb}{determine\+Winner\+\_\+\+AI\+\_\+vs\+\_\+\+AI}} (String ai\+Choice1, String ai\+Choice2)
+\begin{DoxyCompactList}\small\item\em Визначає переможця між двома AI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_s_p8266___c_h340__3_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\begin{DoxyCompactList}\small\item\em Основний цикл програми. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_e_s_p8266___c_h340__3_8ino_abb87d4ae41111ce60501c0a16946f38e}\index{ESP8266\_CH340\_3.ino@{ESP8266\_CH340\_3.ino}!determineWinner@{determineWinner}}
+\index{determineWinner@{determineWinner}!ESP8266\_CH340\_3.ino@{ESP8266\_CH340\_3.ino}}
+\doxysubsubsection{\texorpdfstring{determineWinner()}{determineWinner()}}
+{\footnotesize\ttfamily \label{_e_s_p8266___c_h340__3_8ino_abb87d4ae41111ce60501c0a16946f38e} 
+String determine\+Winner (\begin{DoxyParamCaption}\item[{String}]{player\+Choice}{, }\item[{String}]{ai\+Choice}{}\end{DoxyParamCaption})}
+
+
+
+Визначає переможця між гравцем та AI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Choice} & Вибір гравця ("{}\+Rock"{}, "{}\+Paper"{} або "{}\+Scissors"{}). \\
+\hline
+{\em ai\+Choice} & Вибір AI ("{}\+Rock"{}, "{}\+Paper"{} або "{}\+Scissors"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String Результат гри ("{}\+Player wins"{}, "{}\+AI wins"{} або "{}\+Draw"{}). 
+\end{DoxyReturn}
+\Hypertarget{_e_s_p8266___c_h340__3_8ino_a4a95b15dbda48d5c06c000bca6cfa2fb}\index{ESP8266\_CH340\_3.ino@{ESP8266\_CH340\_3.ino}!determineWinner\_AI\_vs\_AI@{determineWinner\_AI\_vs\_AI}}
+\index{determineWinner\_AI\_vs\_AI@{determineWinner\_AI\_vs\_AI}!ESP8266\_CH340\_3.ino@{ESP8266\_CH340\_3.ino}}
+\doxysubsubsection{\texorpdfstring{determineWinner\_AI\_vs\_AI()}{determineWinner\_AI\_vs\_AI()}}
+{\footnotesize\ttfamily \label{_e_s_p8266___c_h340__3_8ino_a4a95b15dbda48d5c06c000bca6cfa2fb} 
+String determine\+Winner\+\_\+\+AI\+\_\+vs\+\_\+\+AI (\begin{DoxyParamCaption}\item[{String}]{ai\+Choice1}{, }\item[{String}]{ai\+Choice2}{}\end{DoxyParamCaption})}
+
+
+
+Визначає переможця між двома AI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ai\+Choice1} & Вибір першого AI ("{}\+Rock"{}, "{}\+Paper"{} або "{}\+Scissors"{}). \\
+\hline
+{\em ai\+Choice2} & Вибір другого AI ("{}\+Rock"{}, "{}\+Paper"{} або "{}\+Scissors"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String Результат гри ("{}\+AI 1 wins"{}, "{}\+AI 2 wins"{} або "{}\+Draw"{}). 
+\end{DoxyReturn}
+\Hypertarget{_e_s_p8266___c_h340__3_8ino_a2daacc76ecc72a1b593f97bed5593f20}\index{ESP8266\_CH340\_3.ino@{ESP8266\_CH340\_3.ino}!getRandomChoice@{getRandomChoice}}
+\index{getRandomChoice@{getRandomChoice}!ESP8266\_CH340\_3.ino@{ESP8266\_CH340\_3.ino}}
+\doxysubsubsection{\texorpdfstring{getRandomChoice()}{getRandomChoice()}}
+{\footnotesize\ttfamily \label{_e_s_p8266___c_h340__3_8ino_a2daacc76ecc72a1b593f97bed5593f20} 
+String get\+Random\+Choice (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Генерує випадковий вибір для гри "{}Камінь, ножиці, папір"{}. 
+
+\begin{DoxyReturn}{Returns}
+String Випадковий вибір ("{}\+Rock"{}, "{}\+Paper"{} або "{}\+Scissors"{}). 
+\end{DoxyReturn}
+\Hypertarget{_e_s_p8266___c_h340__3_8ino_afe461d27b9c48d5921c00d521181f12f}\index{ESP8266\_CH340\_3.ino@{ESP8266\_CH340\_3.ino}!loop@{loop}}
+\index{loop@{loop}!ESP8266\_CH340\_3.ino@{ESP8266\_CH340\_3.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily \label{_e_s_p8266___c_h340__3_8ino_afe461d27b9c48d5921c00d521181f12f} 
+void loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Основний цикл програми. 
+
+Зчитує JSON-\/запити із серійного порту та обробляє їх залежно від вибраного режиму гри. \Hypertarget{_e_s_p8266___c_h340__3_8ino_a4fc01d736fe50cf5b977f755b675f11d}\index{ESP8266\_CH340\_3.ino@{ESP8266\_CH340\_3.ino}!setup@{setup}}
+\index{setup@{setup}!ESP8266\_CH340\_3.ino@{ESP8266\_CH340\_3.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{_e_s_p8266___c_h340__3_8ino_a4fc01d736fe50cf5b977f755b675f11d} 
+void setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Ініціалізація серійного порту. 
+
+Налаштовує серійний порт на швидкість 115200 біт/с і чекає на його підключення. 
