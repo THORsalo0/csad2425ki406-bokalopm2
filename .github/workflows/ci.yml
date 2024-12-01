@@ -26,13 +26,13 @@ jobs:
   
 
 
-      # Завантаження Doxygen архіву і розпаковка
-      - name: Download and Extract Doxygen
+      # Завантаження та встановлення Doxygen
+      - name: Download and install Doxygen
         run: |
-          Invoke-WebRequest -Uri "https://doxygen.nl/files/doxygen-1.12.0.windows.bin.zip" -OutFile "doxygen.zip"
-          Expand-Archive -Path "doxygen.zip" -DestinationPath "$env:TEMP\doxygen"
-          $env:PATH = "$env:TEMP\doxygen\doxygen-1.12.0.windows.bin;$env:PATH"
-          doxygen -v # Перевірка встановлення
+          Invoke-WebRequest -Uri "https://github.com/doxygen/doxygen/releases/latest/download/doxygen-1.9.7.windows.bin.zip" -OutFile "doxygen.zip"
+          Expand-Archive -Path "doxygen.zip" -DestinationPath "./doxygen"
+          $env:Path += ";$PWD/doxygen/doxygen-1.9.7/bin"
+          doxygen -v
 
 
 
