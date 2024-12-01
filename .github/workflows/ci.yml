@@ -18,61 +18,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Setup MSBuild
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1
-
-      # Restore NuGet packages
-      - name: Restore NuGet packages
-        run: nuget restore ./APKS_Lab3/APKS_Lab3.sln
-
-      # Build solution with output directory
-      - name: Build solution
-        run: msbuild ./APKS_Lab3/APKS_Lab3.sln /p:Configuration=Release /p:OutDir=${{ github.workspace }}/output/ /verbosity:minimal
-
-      # Перевірка всіх файлів у проекті для відладки
-      - name: List all files recursively
-        run: Get-ChildItem ./APKS_Lab3 -Recurse
-
-      # Перевірка файлів у obj/Release
-      - name: Check output directory
-        run: dir ./APKS_Lab3/APKS_Lab3/obj/Release
 
 
-      # Upload Executable as Artifact
-      - name: Upload Executable as Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: Executable
-          path: ./APKS_Lab3/APKS_Lab3/obj/Release/APKS_Lab3.exe
-          
 
 
-    # Restore NuGet packages for test project (UnitTestProject)
-      - name: Restore NuGet packages for test project
+
+  
+
+
+      # Завантаження Doxygen архіву і розпаковка
+      - name: Download and Extract Doxygen
         run: |
-          dotnet restore ./APKS_Lab3/UnitTestProject_Lab3_Software/UnitTestProject_Lab3_Software.csproj
-
-          
-
-      # Run Unit tests
-      - name: Run Unit tests
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-results
-          path: Tests/Test_results.txt
-
-
-
-
-       # Install Doxygen using PowerShell
-      - name: Install Doxygen
-        run: |
-          # Download Doxygen installer
-          Invoke-WebRequest -Uri "https://doxygen.nl/files/doxygen-1.12.0-setup.exe" -OutFile "$env:TEMP\doxygen-setup.exe"
-
-          # Install Doxygen silently
-          Start-Process -FilePath "$env:TEMP\doxygen-setup.exe" -ArgumentList "/S" -Wait
+          Invoke-WebRequest -Uri "https://doxygen.nl/files/doxygen-1.12.0.windows.bin.zip" -OutFile "doxygen.zip"
+          Expand-Archive -Path "doxygen.zip" -DestinationPath "$env:TEMP\doxygen"
+          $env:PATH = "$env:TEMP\doxygen\doxygen-1.12.0.windows.bin;$env:PATH"
+          doxygen -v # Перевірка встановлення
 
 
 
