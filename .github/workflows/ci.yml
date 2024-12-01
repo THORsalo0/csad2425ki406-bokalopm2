@@ -29,7 +29,8 @@ jobs:
       # Завантаження та встановлення Doxygen
       - name: Download and install Doxygen
         run: |
-          Invoke-WebRequest -Uri "https://github.com/doxygen/doxygen/releases/latest/download/doxygen-1.9.7.windows.bin.zip" -OutFile "doxygen.zip"
+          $url = (Invoke-RestMethod -Uri "https://api.github.com/repos/doxygen/doxygen/releases/latest").assets | Where-Object { $_.name -like "*windows.bin.zip" } | Select-Object -ExpandProperty browser_download_url
+          Invoke-WebRequest -Uri $url -OutFile "doxygen.zip"
           Expand-Archive -Path "doxygen.zip" -DestinationPath "./doxygen"
           $env:Path += ";$PWD/doxygen/doxygen-1.9.7/bin"
           doxygen -v
