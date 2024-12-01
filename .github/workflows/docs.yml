@@ -1,0 +1,41 @@
+name: CI Build/Test
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+
+      # Install and configure Doxygen
+      - name: Install Doxygen
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen
+          
+      # Generate Doxygen Documentation
+      - name: Generate Doxygen Documentation
+        run: |
+          doxygen -g # Generates a default Doxyfile if none exists
+          sed -i 's|OUTPUT_DIRECTORY.*|OUTPUT_DIRECTORY = ./docs|' Doxyfile
+          sed -i 's|INPUT.*|INPUT = ./|' Doxyfile
+          sed -i 's|RECURSIVE.*|RECURSIVE = YES|' Doxyfile
+          doxygen Doxyfile
+
+      # Upload documentation as artifact
+      - name: Upload documentation as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: docs_html_csad2425ki406bokalopm2
+          path: docs/html
+
