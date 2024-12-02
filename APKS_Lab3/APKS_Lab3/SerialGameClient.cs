@@ -22,6 +22,10 @@ namespace APKS_Lab3
             serialPort.Open();
         }
 
+
+        /// <summary>
+        /// Створення, відправка й отримання JSON запиту
+        /// </summary>
         public string PlayGame(string gameMode, string playerChoice)
         {
             if(gameMode == "Player vs AI")

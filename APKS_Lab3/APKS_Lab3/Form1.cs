@@ -13,23 +13,45 @@ using System.Windows.Forms;
 namespace APKS_Lab3
 {
 
+    /// <summary>
+    /// Головна форма клієнтської частини гри "Камінь-Ножиці-Папір".
+    /// </summary>
     public partial class main_Form : Form
     {
 
+        /// <summary>
+        /// Клієнт для роботи з послідовним портом.
+        /// </summary>
         private SerialGameClient serialGameClient;
 
+
+        /// <summary>
+        /// Колір для вимкненої кнопки.
+        /// </summary>
         Color off_color = ColorTranslator.FromHtml("#949494");
+
+        /// <summary>
+        /// Колір для ввімкненої кнопки.
+        /// </summary>
         Color on_color = Color.White;
 
+        /// <summary>
+        /// Таймер для гри "AI проти AI".
+        /// </summary>
         private Timer aiVsAiTimer;
 
-
+        /// <summary>
+        /// Конструктор головної форми.
+        /// </summary>
         public main_Form()
         {
             InitializeComponent();
             InitializeGameModes();
         }
 
+        /// <summary>
+        /// Ініціалізація режимів гри.
+        /// </summary>
         // вивід режимів для гри
         private void InitializeGameModes()
         {
@@ -39,6 +61,9 @@ namespace APKS_Lab3
             mod_comboBox.SelectedIndex = 0; // Встановлюємо перший варіант за замовчуванням
         }
 
+        /// <summary>
+        /// Обробник натискання кнопки "Ножиці".
+        /// </summary>
         // Гравець вибрав ножниці
         private void scissors_button_Click(object sender, EventArgs e)
         {
@@ -48,6 +73,9 @@ namespace APKS_Lab3
 
         }
 
+        /// <summary>
+        /// Обробник натискання кнопки "Папір".
+        /// </summary>
         // Гравець вибрав папір
         private void paper_button_Click(object sender, EventArgs e)
         {
@@ -58,6 +86,9 @@ namespace APKS_Lab3
 
         }
 
+        /// <summary>
+        /// Обробник натискання кнопки "Камінь".
+        /// </summary>
         // Гравець вибрав камінь
         private void rock_button_Click(object sender, EventArgs e)
         {
@@ -67,6 +98,10 @@ namespace APKS_Lab3
 
         }
 
+
+        /// <summary>
+        /// Обробник натискання кнопки "Грати".
+        /// </summary>
         // Старт гри
         private void play_button_Click(object sender, EventArgs e)
         {
@@ -154,6 +189,10 @@ namespace APKS_Lab3
 
         }
 
+
+        /// <summary>
+        /// Обробник натискання кнопки "Стоп".
+        /// </summary>
         // Стоп гри
         private void stop_button_Click(object sender, EventArgs e)
         {
@@ -248,6 +287,10 @@ namespace APKS_Lab3
 
         }
 
+
+        /// <summary>
+        /// Обробка JSON повідомлення
+        /// </summary>
         private void send_button_click (string playerChoice)
         {
             if (serialGameClient == null)
@@ -319,6 +362,10 @@ namespace APKS_Lab3
           
         }
 
+
+        /// <summary>
+        /// Зупиняє гру "AI проти AI".
+        /// </summary>
         private void StopAiVsAiGame()
         {
             aiVsAiTimer?.Stop();
