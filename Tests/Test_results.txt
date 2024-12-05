@@ -3,13 +3,19 @@ V S T e s t   v e r s i o n   1 7 . 1 1 . 0   ( x 6 4 )
   
  S t a r t i n g   t e s t   e x e c u t i o n ,   p l e a s e   w a i t . . .  
  A   t o t a l   o f   1   t e s t   f i l e s   m a t c h e d   t h e   s p e c i f i e d   p a t t e r n .  
-     P a s s e d   T e s t S c i s s o r s B u t t o n E x i s t s   [ 2 3 2   m s ]  
-     P a s s e d   T e s t P a p e r B u t t o n E x i s t s   [ 1   m s ]  
-     P a s s e d   T e s t R o c k B u t t o n E x i s t s   [ <   1   m s ]  
-  
+     P a s s e d   T e s t S c i s s o r s B u t t o n C l i c k _ C a l l s S e n d B u t t o n C l i c k W i t h S c i s s o r s   [ 2 3 3   m s ]  
+     P a s s e d   T e s t P a p e r B u t t o n C l i c k _ C a l l s S e n d B u t t o n C l i c k W i t h P a p e r   [ <   1   m s ]  
+     P a s s e d   T e s t R o c k B u t t o n C l i c k _ C a l l s S e n d B u t t o n C l i c k W i t h R o c k   [ <   1   m s ]  
+     P a s s e d   T e s t P l a y B u t t o n C l i c k _ U I S t a t e C h a n g e s   [ 3 8   m s ]  
+     P a s s e d   T e s t P l a y B u t t o n C l i c k _ A I V s A I _ M o d e   [ 7   m s ]  
+     P a s s e d   T e s t S t o p B u t t o n C l i c k   [ 1 4 0   m s ]  
+     P a s s e d   T e s t M a i n F o r m L o a d   [ 3   m s ]  
+     P a s s e d   S e n d B u t t o n C l i c k _ P l a y e r V s A I _ S h o u l d A p p e n d F o r m a t t e d R e s p o n s e   [ 3 9 8   m s ]  
+     P a s s e d   S e n d B u t t o n C l i c k _ A i V s A i _ S h o u l d A p p e n d F o r m a t t e d R e s p o n s e   [ 1 2   m s ]  
+ 
  T e s t   R u n   S u c c e s s f u l .  
- T o t a l   t e s t s :   3  
-           P a s s e d :   3  
-   T o t a l   t i m e :   0 , 8 9 5 7   S e c o n d s  
+ T o t a l   t e s t s :   9  
+           P a s s e d :   9  
+   T o t a l   t i m e :   1 , 6 1 7 5   S e c o n d s  
+ Test Coverage: 80,00%
 
- 

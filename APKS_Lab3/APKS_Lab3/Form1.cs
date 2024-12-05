@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace APKS_Lab3
         /// <summary>
         /// Клієнт для роботи з послідовним портом.
         /// </summary>
-        private SerialGameClient serialGameClient;
+        public ISerialGameClient serialGameClient;
 
 
         /// <summary>
@@ -38,7 +39,11 @@ namespace APKS_Lab3
         /// <summary>
         /// Таймер для гри "AI проти AI".
         /// </summary>
-        private Timer aiVsAiTimer;
+        public Timer aiVsAiTimer;
+
+
+        public string lastSentValue; // Додане поле
+
 
         /// <summary>
         /// Конструктор головної форми.
@@ -65,9 +70,8 @@ namespace APKS_Lab3
         /// Обробник натискання кнопки "Ножиці".
         /// </summary>
         // Гравець вибрав ножниці
-        private void scissors_button_Click(object sender, EventArgs e)
+        public void scissors_button_Click(object sender, EventArgs e)
         {
-            //HandlePlayerChoice(GameLogic.Choice.Scissors);
 
             send_button_click("Scissors");
 
@@ -77,9 +81,8 @@ namespace APKS_Lab3
         /// Обробник натискання кнопки "Папір".
         /// </summary>
         // Гравець вибрав папір
-        private void paper_button_Click(object sender, EventArgs e)
+        public void paper_button_Click(object sender, EventArgs e)
         {
-            //HandlePlayerChoice(GameLogic.Choice.Paper);
 
             send_button_click("Paper");
 
@@ -90,10 +93,8 @@ namespace APKS_Lab3
         /// Обробник натискання кнопки "Камінь".
         /// </summary>
         // Гравець вибрав камінь
-        private void rock_button_Click(object sender, EventArgs e)
+        public void rock_button_Click(object sender, EventArgs e)
         {
-            //HandlePlayerChoice(GameLogic.Choice.Rock);
-
             send_button_click("Rock");
 
         }
@@ -103,7 +104,7 @@ namespace APKS_Lab3
         /// Обробник натискання кнопки "Грати".
         /// </summary>
         // Старт гри
-        private void play_button_Click(object sender, EventArgs e)
+        public void play_button_Click(object sender, EventArgs e)
         {
             //GameLogic gameLogic = new GameLogic();
 
@@ -151,7 +152,7 @@ namespace APKS_Lab3
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to open serial port: {ex.Message}");
+                //MessageBox.Show($"Failed to open serial port: {ex.Message}");
             }
 
 
@@ -184,8 +185,8 @@ namespace APKS_Lab3
 
 
 
-            
-           
+
+
 
         }
 
@@ -194,7 +195,7 @@ namespace APKS_Lab3
         /// Обробник натискання кнопки "Стоп".
         /// </summary>
         // Стоп гри
-        private void stop_button_Click(object sender, EventArgs e)
+        public void stop_button_Click(object sender, EventArgs e)
         {
             results_textBox.AppendText($"Game has been stopped! {Environment.NewLine} {Environment.NewLine}");
 
@@ -220,7 +221,7 @@ namespace APKS_Lab3
 
                 paper_button.Enabled = false;
                 paper_button.FlatStyle = FlatStyle.Standard;
-                paper_button.BackColor= off_color;
+                paper_button.BackColor = off_color;
 
                 scissors_button.Enabled = false;
                 scissors_button.FlatStyle = FlatStyle.Standard;
@@ -237,25 +238,10 @@ namespace APKS_Lab3
         }
 
 
-        //// Player vs AI
-        //private void HandlePlayerChoice(GameLogic.Choice playerChoice)
-        //{
-        //    // AI вибирає
-        //    var aiChoice = GameLogic.GetRandomChoice();
-
-        //    // Визначаємо результат
-        //    var result = GameLogic.DetermineWinner(playerChoice, aiChoice);
-
-        //    // Виводимо у `results_textBox`
-        //    results_textBox.AppendText($"Player chose: {playerChoice}{Environment.NewLine}");
-        //    results_textBox.AppendText($"AI chose: {aiChoice}{Environment.NewLine}");
-        //    results_textBox.AppendText($"Result: {result}{Environment.NewLine}{Environment.NewLine}");
-        //}
-
 
 
         // при запуску головного вікна
-        private void main_Form_Load(object sender, EventArgs e)
+        public void main_Form_Load(object sender, EventArgs e)
         {
 
             //дизайн
@@ -283,7 +269,7 @@ namespace APKS_Lab3
             }
 
 
-           
+
 
         }
 
@@ -291,11 +277,14 @@ namespace APKS_Lab3
         /// <summary>
         /// Обробка JSON повідомлення
         /// </summary>
-        private void send_button_click (string playerChoice)
+        public void send_button_click(string playerChoice)
         {
+
+            lastSentValue = playerChoice;
+
             if (serialGameClient == null)
             {
-                MessageBox.Show("Serial connection is not established.");
+                //MessageBox.Show("Serial connection is not established.");
                 return;
             }
 
@@ -332,7 +321,7 @@ namespace APKS_Lab3
                 aiVsAiTimer.Interval = 5000; // Інтервал 5 секунд
                 aiVsAiTimer.Tick += (sender, e) =>
                 {
-                    if(serialGameClient != null)
+                    if (serialGameClient != null)
                     {
                         try
                         {
@@ -353,13 +342,13 @@ namespace APKS_Lab3
                         }
                     }
 
-                   
+
                 };
 
                 aiVsAiTimer.Start();
             }
 
-          
+
         }
 
 
@@ -371,6 +360,28 @@ namespace APKS_Lab3
             aiVsAiTimer?.Stop();
             aiVsAiTimer?.Dispose();
             aiVsAiTimer = null;
+        }
+
+        public void AiVsAiTimer_Tick(object sender, EventArgs e)
+        {
+            if (serialGameClient != null)
+            {
+                try
+                {
+                    string response = serialGameClient.PlayGame("AI vs AI", string.Empty);
+                    var result = JsonConvert.DeserializeObject<dynamic>(response);
+
+                    string formattedResponse = $"AI 1 Choice: {result.AI1Choice}{Environment.NewLine}" +
+                                               $"AI 2 Choice: {result.AI2Choice}{Environment.NewLine}" +
+                                               $"Result: {result.Result}{Environment.NewLine}";
+
+                    results_textBox.AppendText(formattedResponse + Environment.NewLine);
+                }
+                catch
+                {
+                    StopAiVsAiGame();
+                }
+            }
         }
 
 
