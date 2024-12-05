@@ -143,14 +143,14 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox mod_comboBox;
-        private System.Windows.Forms.Label mode_label;
-        private System.Windows.Forms.TextBox results_textBox;
-        private System.Windows.Forms.Button rock_button;
-        private System.Windows.Forms.Button paper_button;
-        private System.Windows.Forms.Button scissors_button;
-        private System.Windows.Forms.Button play_button;
-        private System.Windows.Forms.Button stop_button;
+        public System.Windows.Forms.ComboBox mod_comboBox;
+        public System.Windows.Forms.Label mode_label;
+        public System.Windows.Forms.TextBox results_textBox;
+        public System.Windows.Forms.Button rock_button;
+        public System.Windows.Forms.Button paper_button;
+        public System.Windows.Forms.Button scissors_button;
+        public System.Windows.Forms.Button play_button;
+        public System.Windows.Forms.Button stop_button;
     }
 }
 

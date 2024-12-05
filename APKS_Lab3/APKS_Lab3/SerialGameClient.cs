@@ -9,10 +9,14 @@ using System.IO.Ports;
 
 namespace APKS_Lab3
 {
-  
 
+    public interface ISerialGameClient
+    {
+        string PlayGame(string gameMode, string playerChoice);
+        void Close();
+    }
 
-    public class SerialGameClient
+    public class SerialGameClient : ISerialGameClient
     {
         private SerialPort serialPort;
 
@@ -26,9 +30,9 @@ namespace APKS_Lab3
         /// <summary>
         /// Створення, відправка й отримання JSON запиту
         /// </summary>
-        public string PlayGame(string gameMode, string playerChoice)
+        public virtual string PlayGame(string gameMode, string playerChoice)
         {
-            if(gameMode == "Player vs AI")
+            if (gameMode == "Player vs AI")
             {
                 // Формування JSON-запиту для Player vs AI
                 var request = new
@@ -65,10 +69,10 @@ namespace APKS_Lab3
                 return jsonResponse;
             }
 
-            
+
         }
 
-        public void Close()
+        public virtual void Close()
         {
             if (serialPort.IsOpen)
                 serialPort.Close();

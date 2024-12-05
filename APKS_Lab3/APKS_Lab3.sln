@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APKS_Lab3", "APKS_Lab3\APKS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject_Lab3_Software", "UnitTestProject_Lab3_Software\UnitTestProject_Lab3_Software.csproj", "{E967B444-9637-466C-87D4-431D96CAA30A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject_Hardware", "UnitTestProject_Hardware\UnitTestProject_Hardware.csproj", "{EAD8C6CE-A4FA-42CA-AF99-72151964C99D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E967B444-9637-466C-87D4-431D96CAA30A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E967B444-9637-466C-87D4-431D96CAA30A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E967B444-9637-466C-87D4-431D96CAA30A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAD8C6CE-A4FA-42CA-AF99-72151964C99D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD8C6CE-A4FA-42CA-AF99-72151964C99D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAD8C6CE-A4FA-42CA-AF99-72151964C99D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAD8C6CE-A4FA-42CA-AF99-72151964C99D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
